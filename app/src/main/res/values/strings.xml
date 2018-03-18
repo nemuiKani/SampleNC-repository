@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">SampleNC</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="app_name">サンプルランキング(ニフクラ)</string>
+    <string name="title_home">Edit</string>
+    <string name="title_dashboard">Ranking</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="fragment_edit_screen_title">ランキング情報登録</string>
+    <string name="fragment_edit_ranking">順位(１位～１００位)</string>
+    <string name="fragment_edit_name">名前</string>
+    <string name="fragment_edit_comment">コメント</string>
+    <string name="fragment_edit_button">登録</string>
+
 </resources>

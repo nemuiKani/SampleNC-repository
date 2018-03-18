@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_edit_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/fragment_edit_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/fragment_edit_liner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_edit_screen_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:paddingTop="30dp"
+                android:text="@string/fragment_edit_screen_title"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Emerald" />
+
+            <TextView
+                android:id="@+id/fragment_edit_ranking_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:paddingTop="40dp"
+                android:text="@string/fragment_edit_ranking" />
+
+            <Spinner
+                android:id="@+id/fragment_edit_ranking_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:paddingStart="40dp"
+                android:paddingTop="30dp"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                />
+
+            <TextView
+                android:id="@+id/fragment_edit_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:paddingTop="30dp"
+                android:text="@string/fragment_edit_name" />
+
+            <EditText
+                android:id="@+id/fragment_edit_name_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:inputType="text"
+                android:maxLength="10"
+                android:paddingTop="30dp" />
+
+            <TextView
+                android:id="@+id/fragment_edit_comment_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:paddingTop="30dp"
+                android:text="@string/fragment_edit_comment" />
+
+            <EditText
+                android:id="@+id/fragment_edit_comment_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:inputType="textMultiLine"
+                android:maxLength="20"
+                android:paddingTop="30dp" />
+
+            <Button
+                android:id="@+id/fragment_edit_register_button"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/fragment_edit_button"
+                android:textColor="@color/white"
+                android:background="@drawable/button_design"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
