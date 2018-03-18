@@ -22,5 +22,7 @@ public class Const {
     public static final String NCMB_PARAM_NAME = "NCMB_PARAM_NAME";
     /** NCMBパラメータ_コメント */
     public static final String NCMB_PARAM_COMMENT = "NCMB_PARAM_COMMENT";
+    /** NCMBパラメータ_登録日時(標準で準備されているもの) */
+    public static final String NCMB_PARAM_CREATE_DATE = "createDate";
 
 }

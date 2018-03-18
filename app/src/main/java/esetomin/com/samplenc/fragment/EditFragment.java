@@ -49,6 +49,7 @@ public class EditFragment extends Fragment {
         // 順位
         final Spinner rankingSpinner = view.findViewById(R.id.fragment_edit_ranking_spinner);
         rankingSpinner.setAdapter(createSpinnerItems());
+
         // 名前
         final TextView nameEdit = view.findViewById(R.id.fragment_edit_name_edit);
         // コメント

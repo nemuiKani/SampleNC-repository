@@ -24,7 +24,10 @@
                 android:paddingTop="30dp"
                 android:text="@string/fragment_edit_screen_title"
                 android:textAppearance="@android:style/TextAppearance.Large"
-                android:textColor="@color/Emerald" />
+                android:textColor="@color/Emerald"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
 
             <TextView
                 android:id="@+id/fragment_edit_ranking_label"
@@ -42,8 +45,7 @@
                 android:layout_marginStart="40dp"
                 android:paddingStart="40dp"
                 android:paddingTop="30dp"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-                />
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
 
             <TextView
                 android:id="@+id/fragment_edit_name_label"
@@ -92,6 +94,12 @@
                 android:text="@string/fragment_edit_button"
                 android:textColor="@color/white"
                 android:background="@drawable/button_design"/>
+
+            <View
+                android:layout_gravity="bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"/>
 
         </LinearLayout>
 

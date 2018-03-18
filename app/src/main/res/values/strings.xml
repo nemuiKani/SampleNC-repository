@@ -10,4 +10,6 @@
     <string name="fragment_edit_comment">コメント</string>
     <string name="fragment_edit_button">登録</string>
 
+    <string name="fragment_notifications_screen_title">作者情報</string>
+
 </resources>
