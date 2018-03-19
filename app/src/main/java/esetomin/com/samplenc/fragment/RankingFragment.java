@@ -25,10 +25,11 @@ import esetomin.com.samplenc.common.Const;
 /**
  * ランキング画面のフラグメント。
  *
- * @author Taro
+ * @author nemuiKani
  * @version 1.0
  */
 public class RankingFragment extends Fragment {
+    private static final String RANK_STR = "位　";
 
     /**
      * onCreateViewイベント。
@@ -45,23 +46,25 @@ public class RankingFragment extends Fragment {
         // ランキングを取得
         List<Map<String, String>> rankingList = new ArrayList<>();
         // 初期処理
-        NCMB.initialize(getContext(), Const.APP_KEY, Const.CLIENT_KEY);
+        NCMB.initialize(getActivity().getApplicationContext(), Const.APP_KEY, Const.CLIENT_KEY);
         // クエリを作成
         NCMBQuery<NCMBObject> query = new NCMBQuery<>(Const.APP_NAME);
-        // ランクの昇順の昇順、登録日時の降順でデータを取得
+        // ランクの昇順、登録日時の降順でデータを取得
         query.addOrderByAscending(Const.NCMB_PARAM_RANK);
         query.addOrderByDescending(Const.NCMB_PARAM_CREATE_DATE);
-        //検索件数を10件に設定
+        //検索件数を100件に設定
         query.setLimit(100);
         try {
-            //データストアでの検索を行う
+            // データストアでの検索を行う
             List<NCMBObject> objects = query.find();
+            // バックグランドにて行う場合は下記
+            //List<NCMBObject> objects = query.findInBackground();
             for (NCMBObject obj :objects) {
                 Map<String,String> map = new HashMap<>();
                 // simple_list_item_2を使いたいので編集
                 StringBuilder sb = new StringBuilder();
                 sb.append(obj.getString(Const.NCMB_PARAM_RANK));
-                sb.append("位　");
+                sb.append(RANK_STR);
                 sb.append(obj.getString(Const.NCMB_PARAM_NAME));
 
                 map.put(Const.NCMB_PARAM_RANK, sb.toString());
@@ -69,7 +72,7 @@ public class RankingFragment extends Fragment {
                 rankingList.add(map);
             }
         } catch (NCMBException e) {
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         // ListViewの表示

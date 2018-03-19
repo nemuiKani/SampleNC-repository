@@ -25,7 +25,7 @@ import com.nifty.cloud.mb.core.NCMBObject;
 /**
  * 入力画面のフラグメント。
  *
- * @author Taro
+ * @author nemuiKani
  * @version 1.0
  */
 public class EditFragment extends Fragment {
@@ -89,7 +89,7 @@ public class EditFragment extends Fragment {
                 // クラスのNCMBObjectを作成
                 NCMBObject obj = new NCMBObject(Const.APP_NAME);
                 // オブジェクトの値を設定
-                obj.put(Const.NCMB_PARAM_RANK, rankingSpinner.getSelectedItem().toString());
+                obj.put(Const.NCMB_PARAM_RANK, Integer.parseInt(rankingSpinner.getSelectedItem().toString()));
                 obj.put(Const.NCMB_PARAM_NAME, rankingName);
                 obj.put(Const.NCMB_PARAM_COMMENT, rankingComment);
                 // データストアへの登録
@@ -99,10 +99,13 @@ public class EditFragment extends Fragment {
                         if (e != null) {
                             // 保存に失敗した場合の処理
                             // トースタにエラー内容を表示
-                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                         } else {
-                            //保存に成功した場合の処理
-                            Toast.makeText(getContext(), REGISTER_MESSAGE, Toast.LENGTH_SHORT).show();
+                            // 保存に成功した場合の処理
+                            Toast.makeText(getActivity().getApplicationContext(), REGISTER_MESSAGE, Toast.LENGTH_SHORT).show();
+                            // 名前、コメントの初期化
+                            nameEdit.setText("");
+                            commentEdit.setText("");
                         }
                     }
                 });

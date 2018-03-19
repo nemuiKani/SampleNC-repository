@@ -3,7 +3,7 @@
     <string name="title_home">Edit</string>
     <string name="title_dashboard">Ranking</string>
     <string name="title_notifications">Notifications</string>
-
+-
     <string name="fragment_edit_screen_title">ランキング情報登録</string>
     <string name="fragment_edit_ranking">順位(１位～１００位)</string>
     <string name="fragment_edit_name">名前</string>
@@ -11,5 +11,11 @@
     <string name="fragment_edit_button">登録</string>
 
     <string name="fragment_notifications_screen_title">作者情報</string>
+    <string name="fragment_notifications_git_url_label">GitHub：</string>
+    <string name="fragment_notifications_git_url">https://github.com/nemuiKani/SampleNC-repository</string>
+    <string name="fragment_notifications_qiita_url_label">Qiita：</string>
+    <string name="fragment_notifications_qiita_url">https://github.com/nemuiKani/SampleNC-repository</string>
+    <string name="fragment_notifications_app_url_label">その他アプリ：</string>
+    <string name="fragment_notifications_app_url">https://play.google.com/store/apps/developer?id=%E3%81%AD%E3%82%80%E3%81%84</string>
 
 </resources>

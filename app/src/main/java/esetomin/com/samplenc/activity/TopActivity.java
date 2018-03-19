@@ -13,6 +13,12 @@ import esetomin.com.samplenc.fragment.EditFragment;
 import esetomin.com.samplenc.fragment.NotificationFragment;
 import esetomin.com.samplenc.fragment.RankingFragment;
 
+/**
+ * トップ画面のアクティビティ。
+ *
+ * @author nemuiKani
+ * @version 1.0
+ */
 public class TopActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
