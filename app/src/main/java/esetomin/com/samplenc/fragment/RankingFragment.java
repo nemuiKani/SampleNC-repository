@@ -43,7 +43,19 @@ public class RankingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_ranking, container, false);
 
-        // ランキングを取得
+        // ListViewの表示
+        SimpleAdapter adapter = new SimpleAdapter(getContext(), getRankingList(),
+                android.R.layout.simple_list_item_2,
+                new String[] { Const.NCMB_PARAM_RANK, Const.NCMB_PARAM_COMMENT },
+                new int[] { android.R.id.text1, android.R.id.text2});
+        ListView listView = view.findViewById(R.id.fragment_ranking_list);
+        listView.setAdapter(adapter);
+
+        return view;
+    }
+
+    private List<Map<String, String>> getRankingList () {
+        // 返却値
         List<Map<String, String>> rankingList = new ArrayList<>();
         // 初期処理
         NCMB.initialize(getActivity().getApplicationContext(), Const.APP_KEY, Const.CLIENT_KEY);
@@ -75,15 +87,7 @@ public class RankingFragment extends Fragment {
             Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-        // ListViewの表示
-        SimpleAdapter adapter = new SimpleAdapter(getContext(), rankingList,
-                android.R.layout.simple_list_item_2,
-                new String[] { Const.NCMB_PARAM_RANK, Const.NCMB_PARAM_COMMENT },
-                new int[] { android.R.id.text1, android.R.id.text2});
-        ListView listView = view.findViewById(R.id.fragment_ranking_list);
-        listView.setAdapter(adapter);
-
-        return view;
+        return rankingList;
     }
 
 }

@@ -48,6 +48,7 @@ public class EditFragment extends Fragment {
 
         // 順位
         final Spinner rankingSpinner = view.findViewById(R.id.fragment_edit_ranking_spinner);
+        // 順位の選択肢を設定
         rankingSpinner.setAdapter(createSpinnerItems());
 
         // 名前
@@ -62,10 +63,8 @@ public class EditFragment extends Fragment {
             public void onClick(View v) {
                 // ボタンの非活性化
                 registerButton.setEnabled(false);
-                // デザイン変更
-                Resources res = getResources();
-                Drawable drawableDisable = res.getDrawable(R.drawable.button_design_after_touch);
-                registerButton.setBackground(drawableDisable);
+                // 非活性デザインへ変更
+                changeButtonDesign(registerButton, R.drawable.button_design_after_touch);
 
                 // 値取得
                 // 名前
@@ -84,37 +83,17 @@ public class EditFragment extends Fragment {
                 }
 
                 // ランキングへ登録
-                // 初期処理
-                NCMB.initialize(getContext(), Const.APP_KEY, Const.CLIENT_KEY);
-                // クラスのNCMBObjectを作成
-                NCMBObject obj = new NCMBObject(Const.APP_NAME);
-                // オブジェクトの値を設定
-                obj.put(Const.NCMB_PARAM_RANK, Integer.parseInt(rankingSpinner.getSelectedItem().toString()));
-                obj.put(Const.NCMB_PARAM_NAME, rankingName);
-                obj.put(Const.NCMB_PARAM_COMMENT, rankingComment);
-                // データストアへの登録
-                obj.saveInBackground(new DoneCallback() {
-                    @Override
-                    public void done(NCMBException e) {
-                        if (e != null) {
-                            // 保存に失敗した場合の処理
-                            // トースタにエラー内容を表示
-                            Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                        } else {
-                            // 保存に成功した場合の処理
-                            Toast.makeText(getActivity().getApplicationContext(), REGISTER_MESSAGE, Toast.LENGTH_SHORT).show();
-                            // 名前、コメントの初期化
-                            nameEdit.setText("");
-                            commentEdit.setText("");
-                        }
-                    }
-                });
+                registerRanking(rankingName, rankingComment,
+                        Integer.parseInt(rankingSpinner.getSelectedItem().toString()));
+
+                // 名前、コメントの初期化
+                nameEdit.setText("");
+                commentEdit.setText("");
 
                 // ボタンの活性化
                 registerButton.setEnabled(true);
                 // デザインを元に戻す
-                Drawable drawableAble = res.getDrawable(R.drawable.button_design);
-                registerButton.setBackground(drawableAble);
+                changeButtonDesign(registerButton, R.drawable.button_design);
             }
         });
 
@@ -131,6 +110,37 @@ public class EditFragment extends Fragment {
         }
         return new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, spinnerItems);
+    }
+
+    private void changeButtonDesign(Button button, int drawableItemId) {
+        Resources res = getResources();
+        Drawable drawableDisable = res.getDrawable(drawableItemId);
+        button.setBackground(drawableDisable);
+    }
+
+    private void registerRanking(String rankingName, String rankingComment, int rank) {
+        // 初期処理
+        NCMB.initialize(getContext(), Const.APP_KEY, Const.CLIENT_KEY);
+        // クラスのNCMBObjectを作成
+        NCMBObject obj = new NCMBObject(Const.APP_NAME);
+        // オブジェクトの値を設定
+        obj.put(Const.NCMB_PARAM_RANK, rank);
+        obj.put(Const.NCMB_PARAM_NAME, rankingName);
+        obj.put(Const.NCMB_PARAM_COMMENT, rankingComment);
+        // データストアへの登録
+        obj.saveInBackground(new DoneCallback() {
+            @Override
+            public void done(NCMBException e) {
+                if (e != null) {
+                    // 保存に失敗した場合の処理
+                    // トースタにエラー内容を表示
+                    Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    // 保存に成功した場合の処理
+                    Toast.makeText(getActivity().getApplicationContext(), REGISTER_MESSAGE, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }
